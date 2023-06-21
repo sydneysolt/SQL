@@ -1,0 +1,30 @@
+/*
+Khan Academy Lesson 1: SQL basics
+Task: create a database of 15 items for a store; then create a SELECT statement to order the items by price, and create a second SELECT statement using an aggregate function
+*/
+
+
+CREATE TABLE movie_store (id INTEGER PRIMARY KEY, movie_name TEXT, release_year INTEGER, genre TEXT, price_dollars INTEGER);
+
+INSERT INTO movie_store VALUES
+(1, "The Patriot", 2000, "Historical Fiction", 4),
+(2, "The Matrix", 1999, "Sci-fi", 2),
+(3, "Hercules", 1997, "Children's", 7),
+(4, "As Above, So Below", 2014, "Horror", 1),
+(5, "Toy Story", 1995, "Children's", 7),
+(6, "Toy Story 2", 1999, "Children's", 7),
+(7, "Toy Story 3", 2010, "Children's", 7),
+(8, "Toy Story 4", 2019, "Children's", 7),
+(9, "Train to Busan", 2016, "Horror", 1),
+(10, "Braveheart", 1995, "Historical Fiction", 4),
+(11, "Get Smart", 2008, "Comedy", 3),
+(12, "Step Brothers", 2008, "Comedy", 3),
+(13, "Talladega Nights", 2006, "Comedy", 3),
+(14, "Arrival", 2016, "Sci-fi", 2),
+(15, "Captain America: The First Avenger", 2011, "Action", 5);
+
+SELECT * FROM movie_store
+WHERE release_year >= 2000
+ORDER BY price_dollars;
+
+SELECT SUM(price_dollars) FROM movie_store;
