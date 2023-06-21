@@ -1,5 +1,5 @@
 /*
-Khan Academy Lesson 1: SQL basics
+Khan Academy Lesson 1: SQL basics - Project
 Task: create a database of 15 items for a store; then create a SELECT statement to order the items by price, and create a second SELECT statement using an aggregate function
 */
 
