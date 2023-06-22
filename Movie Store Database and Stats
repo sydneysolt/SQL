@@ -4,7 +4,7 @@ Task: create a database of 15 items for a store; then create a SELECT statement 
 */
 
 
-CREATE TABLE movie_store (id INTEGER PRIMARY KEY, movie_name TEXT, release_year INTEGER, genre TEXT, price_dollars INTEGER);
+CREATE TABLE movie_store (id INTEGER PRIMARY KEY, movie_name TEXT, release_year INTEGER, genre TEXT, price INTEGER);
 
 INSERT INTO movie_store VALUES
 (1, "The Patriot", 2000, "Historical Fiction", 4),
@@ -25,6 +25,6 @@ INSERT INTO movie_store VALUES
 
 SELECT * FROM movie_store
 WHERE release_year >= 2000
-ORDER BY price_dollars;
+ORDER BY price;
 
-SELECT SUM(price_dollars) FROM movie_store;
+SELECT MAX(price) FROM movie_store;
