@@ -27,4 +27,8 @@ SELECT * FROM movie_store
 WHERE release_year >= 2000
 ORDER BY price;
 
-SELECT MAX(price) FROM movie_store;
+/*
+Below, I chose to utilize SUM to show, in the most basic terms, how much profit by genre the movie store could make if all items were sold.
+*/
+
+SELECT genre, SUM(price) FROM movie_store;
