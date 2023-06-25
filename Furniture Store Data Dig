@@ -1,8 +1,9 @@
-/*Khan Academy Lesson 2: More advanced SQL queries
+/*Khan Academy Lesson 2: More advanced SQL queries - Project8*/
 
 /*
 Sales from an online furniture store
 Collected by: https://www.khanacademy.org/profile/charlesb2000/
+Raw data: https://gist.githubusercontent.com/pamelafox/791ce9e4eb31abce2362/raw/77f4bcd03394778312636dc0f7303c387ea4e82e/furniture_store_sales.sql
 */
 CREATE TABLE sales(
   ID INTEGER  NOT NULL PRIMARY KEY
@@ -123,7 +124,7 @@ INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,co
 
 /*Query data below */
 
-/*First, I wanted to fiqure out how many unique products the furniture store sold. As there are no SKU numbers, and since this is meant as a practice dataset, I knew the total number of available products was going to be small.*/
+/*First, I wanted to fiqure out how many unique products the furniture store sold.*/
 
 SELECT product, COUNT(product) AS product_totals FROM sales
 GROUP BY product;
@@ -134,7 +135,6 @@ SELECT product, COUNT(product) AS product_totals, COUNT(product)*100/(SELECT COU
 GROUP BY product;
 
 /*As there are 100 sales in this sample database, it is easy to check the above query as correct by comparing the product_totals to the product_percentages, which would be the same in this specific case.
-
 
 Next, using a few aggregate values, I want to know the average price for each product, as well as the maximum and minimum prices.*/
 
@@ -148,7 +148,6 @@ SELECT product, MIN(price) AS minimum_price FROM sales
 GROUP BY product;
 
 /*As it turns out, the maximum, minimum, and average prices are all the same for each product type.
-
 
 For any business, payment type is useful information to know. In the next few queries, I find out more about the furniture store's customer preferences when paying.*/
 
