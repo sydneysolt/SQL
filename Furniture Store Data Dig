@@ -185,3 +185,10 @@ SELECT city, COUNT(city) AS city_totals FROM sales
 WHERE state = "NY"
 GROUP BY city
 ORDER BY city_totals DESC;
+
+/*Below is a query of the furniture store datbase done in order to fulfill specific project tasks using various SQL functions.*/
+
+SELECT product, SUM(price) AS price_total, country FROM sales
+GROUP BY product
+HAVING SUM(price) >= 40000 AND country = "Germany";
+
