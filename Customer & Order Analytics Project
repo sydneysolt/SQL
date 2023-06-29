@@ -1,0 +1,63 @@
+/*
+This project was created by Break Into Tech.
+The SQLite database file used in this exercise can be found here: https://www.dropbox.com/s/cvsasmtr8syq2c2/BIT_DB?dl=0
+*/
+
+/*1. How many orders were placed in January?*/
+
+SELECT COUNT(orderID)
+FROM JanSales
+WHERE length(orderID) = 6
+
+
+/*2. How many orders were for an iPhone?*/
+
+SELECT COUNT(product)
+FROM JanSales
+WHERE product = "iPhone"
+
+
+/*3. Find the customer account numbers for all the orders that were placed in February.*/
+
+SELECT DISTINCT(FebSales.orderID)
+, customers.acctnum
+FROM FebSales
+JOIN customers
+ON FebSales.orderID = customers.order_id
+WHERE length(order_id) = 6
+
+
+/*4. Which product was the cheapest one sold in January, and what was the price?*/
+
+SELECT product
+, MIN(price)
+FROM JanSales
+ORDER BY price
+LIMIT 1
+
+
+/*5. What was the total revenue for each product sold in January?*/
+
+SELECT product
+, price * SUM(quantity) AS total_revenue
+FROM JanSales
+GROUP BY product
+
+
+/*6. For the address 548 Lincoln St, Seattle, WA 98101, which products were sold, how many of each product were sold, and what was the total revenue per product?*/
+
+SELECT location
+, product
+, quantity
+, price * quantity AS total_revenue
+FROM FebSales
+WHERE location = "548 Lincoln St, Seattle, WA 98101"
+GROUP BY product
+
+
+/*7. How many customers ordered more than 2 products at a time in February? What was the average amount spent for those customers?*/
+
+SELECT COUNT(DISTINCT(orderID)) AS total_customers
+, AVG(quantity * price) AS total_average
+FROM FebSales
+WHERE quantity > 2 AND length(orderID) = 6
