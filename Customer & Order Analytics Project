@@ -61,3 +61,11 @@ SELECT COUNT(DISTINCT(orderID)) AS total_customers
 , AVG(quantity * price) AS total_average
 FROM FebSales
 WHERE quantity > 2 AND length(orderID) = 6
+
+/*8. List all the products sold in Los Angeles in February. Include how many of each product were sold.*/
+
+SELECT product
+, SUM(quantity)
+FROM FebSales
+WHERE location LIKE "%Los Angeles%"
+GROUP BY product
