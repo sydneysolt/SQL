@@ -1,0 +1,34 @@
+/*
+
+The database used was found here: https://www.kaggle.com/datasets/equinxx/spotify-top-50-songs-in-2021?select=spotify_top50_2021.csv
+
+*/
+
+/*1. Of 2021's Top 50, what were the three most popular songs?*/
+
+SELECT artist_name
+, track_name
+FROM Spotifydata
+ORDER BY popularity DESC
+LIMIT 3
+
+
+/*2. Which arist had the most songs in 2021's Top 50? How many songs in the Top 50 did they have, and what was their most popular song?*/
+
+SELECT COUNT(artist_name) AS number_of_top50_songs
+, artist_name
+, (SELECT track_name FROM Spotifydata ORDER BY popularity DESC) AS most_popular_track
+FROM Spotifydata
+GROUP BY artist_name
+ORDER BY COUNT(artist_name) DESC
+LIMIT 1
+
+
+/*3. Determine what songs would be best to play at a night club.*/
+
+SELECT artist_name
+, track_name
+FROM Spotifydata
+WHERE ROUND(tempo) >= 110
+ORDER BY popularity, danceability, energy
+LIMIT 15
