@@ -24,7 +24,7 @@ time_signature integer NOT NULL )
 
 /*Next, I imported the CSV file linked above to populate the newly created Spotifydata table with data.
 
-My queries are below.*/
+Query data below.*/
 
 1. Of 2021's Top 50, what were the three most popular songs?*/
 
@@ -54,3 +54,19 @@ FROM Spotifydata
 WHERE ROUND(tempo) >= 110
 ORDER BY popularity, danceability, energy
 LIMIT 15
+
+
+/*4. Calculate the average popularity for each artist. Then, for every artist with an average popularity of 90 or above, show their name, their average popularity, and label them as a “Top Star”.*/
+
+WITH avg_pop_CTE AS (
+    SELECT artist_name
+    , AVG(popularity) AS avg_popularity
+    FROM Spotifydata
+    GROUP BY artist_name )
+
+SELECT artist_name
+, avg_popularity
+, "Top Star" AS tag
+FROM avg_pop_CTE
+WHERE avg_popularity >= 90
+
