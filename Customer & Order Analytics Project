@@ -118,3 +118,16 @@ GROUP BY product
 ORDER BY product_revenue DESC
 LIMIT 1
 
+/*14. Provice the account numbers, the count of order IDs, product, quantity, price, order date, and location for all orders that were placed in February.*/
+
+SELECT c.acctnum
+, COUNT(f.orderID) AS orders
+, f.Product 
+, f.Quantity
+, f.price
+, f.orderdate
+, f.location
+FROM FebSales f
+JOIN customers c
+ON f.orderID = c.order_id
+GROUP BY c.acctnum
